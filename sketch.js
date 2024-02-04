@@ -1,8 +1,10 @@
 // @ts-check
 /// <reference path="./node_modules/@types/p5/global.d.ts" />
-let nrows = 10;
-let ncols = 10;
+let nrows = 50;
+let ncols = 80;
 let tileSize = 10;
+let tileWidth = 10;
+let tileHeight = 10;
 let fps = 5;
 let nCols;
 let nRows;
@@ -20,9 +22,13 @@ function setup() {
   console.log('Starting...')
   let nPixelsRow = nrows * tileSize;
   let nPixelsCol = ncols * tileSize;
-  createCanvas(nPixelsCol, nPixelsRow);
+  // createCanvas(nPixelsCol, nPixelsRow);
+  createCanvas(windowWidth, windowHeight);
+  tileWidth = windowWidth / ncols
+  tileHeight = windowHeight / nrows
   frameRate(fps);
   noStroke();
+  background(colors['scissors'])
   grid = make2DArray(nrows, ncols, undefined);
   // Draw initial grid
   for (let i = 0; i < nrows; i++) {
@@ -38,24 +44,24 @@ function setup() {
         grid[i][j] = scissors
         fill(colors['scissors']);
       }
-      rect(j * tileSize, i * tileSize, tileSize, tileSize);
+      rect(j * tileWidth, i * tileHeight, tileWidth, tileHeight);
     }
   }
 }
 
 function draw() {
-  background(0)
+  background(colors['scissors'])
   let newGrid = make2DArray(nrows, ncols, undefined);
   for (let i = 0; i < nrows; i++) {
     for (let j = 0; j < ncols; j++) {
       // Count neighbors
       let neighbors = []
-      neighbors.push(grid[(i-1) % nrows][(j-1) % ncols])
-      neighbors.push(grid[(i-1) % nrows][j])
-      neighbors.push(grid[(i-1) % nrows][(j+1) % ncols])
-      neighbors.push(grid[i][(j-1) % ncols])
+      neighbors.push(grid[(nrows+i-1) % nrows][(ncols+j-1) % ncols])
+      neighbors.push(grid[(nrows+i-1) % nrows][j])
+      neighbors.push(grid[(nrows+i-1) % nrows][(j+1) % ncols])
+      neighbors.push(grid[i][(ncols+j-1) % ncols])
       neighbors.push(grid[i][(j+1) % ncols])
-      neighbors.push(grid[(i+1) % nrows][(j-1) % ncols])
+      neighbors.push(grid[(i+1) % nrows][(ncols+j-1) % ncols])
       neighbors.push(grid[(i+1) % nrows][j])
       neighbors.push(grid[(i+1) % nrows][(j+1) % ncols])
       let nrock = neighbors.filter(x => x === rock).length
@@ -63,19 +69,19 @@ function draw() {
       let nscissors = neighbors.filter(x => x === scissors).length
       // Update pixel based on neighbors
       if (grid[i][j] === rock) {
-        if (npaper + random(-2, 3) > 3) {
+        if (npaper + random(-2, 2) > 3) {
           newGrid[i][j] = paper
         } else {
           newGrid[i][j] = rock
         }
       } else if (grid[i][j] === paper) {
-        if (nscissors + random(-2, 3) > 3) {
+        if (nscissors + random(-2, 2) > 3) {
           newGrid[i][j] = scissors
         } else {
           newGrid[i][j] = paper
         }
       } else if (grid[i][j] === scissors) {
-        if (nscissors + random(-2, 3) > 3) {
+        if (nrock + random(-2, 2) > 3) {
           newGrid[i][j] = rock
         } else {
           newGrid[i][j] = scissors
@@ -96,7 +102,7 @@ function draw() {
       } else if (grid[i][j] === scissors) {
         fill(colors['scissors']);
       }
-      rect(j * tileSize, i * tileSize, tileSize, tileSize);
+      rect(j * tileWidth, i * tileHeight, tileWidth, tileHeight);
     }
   }
 }

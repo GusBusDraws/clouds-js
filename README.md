@@ -19,3 +19,6 @@ npm install @types/p5
 ```
 
 ## Change Log
+### 2024-02-04
+- Update grid to match window size
+- Add rock-paper-scissors rules
