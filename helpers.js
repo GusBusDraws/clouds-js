@@ -1,3 +1,13 @@
+// @ts-check
+/// <reference path="./node_modules/@types/p5/global.d.ts" />
+function make2DArray(nRows, nCols, fill = undefined) {
+  let arr = new Array(nRows);
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = new Array(nCols).fill(fill);
+  }
+  return arr;
+}
+
 function keyPressed() {
     // Set spacebar to toggle play/pause of drawing loop
     if (key === ' ') {
@@ -13,4 +23,8 @@ function keyPressed() {
       resetSketch();
     }
   }
-  
+
+function resetSketch() {
+  background(0);
+}
+

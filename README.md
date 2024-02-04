@@ -1,8 +1,5 @@
-# p5js-template
-This is a template for creating new p5 projects. This template is based on
-the p5 + VS Code setup as
-[published by Stef Tervelde and Raphaël de Courville](https://sableraph.notion.site/The-perfect-p5-js-VSCode-setup-for-everyday-creative-coding-414c7eb4fb524da28d53763777d427b8),
-which assumes that p5 will be installed using [Node.js](https://nodejs.org/en).
+# Rock-Paper-Scissors-js
+This is a three state cellular automaton.
 
 ## Installation
 To install p5 to use with this template, first check that Node.js is installed:
@@ -22,8 +19,6 @@ npm install @types/p5
 ```
 
 ## Change Log
-### 2024-01-30
-- Ignore Node packages
-- Add jsconfig for global p5 completion
-- Remove JS directory
-- Remove p5 files
+### 2024-02-04
+- Update grid to match window size
+- Add rock-paper-scissors rules
