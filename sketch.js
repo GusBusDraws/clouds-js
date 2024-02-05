@@ -5,6 +5,7 @@ let ncols = 80;
 let tileSize = 10;
 let tileWidth = 10;
 let tileHeight = 10;
+let asp;
 let fps = 5;
 let nCols;
 let nRows;
@@ -20,6 +21,8 @@ let colors = {
 
 function setup() {
   console.log('Starting...')
+  asp = windowWidth / windowHeight;
+  tileWidth = windowWidth / ncols
   let nPixelsRow = nrows * tileSize;
   let nPixelsCol = ncols * tileSize;
   // createCanvas(nPixelsCol, nPixelsRow);
