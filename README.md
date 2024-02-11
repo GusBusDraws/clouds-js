@@ -19,6 +19,12 @@ npm install @types/p5
 ```
 
 ## Change Log
+### 2024-02-10
+- Add presets for randomness and threshold
+- Add ability to change randomness and threshold with arrow keys
+- Move initialization to `resetSketch`
+- Size grid based on nrows and aspect ratio of screen
+
 ### 2024-02-04
 - Update grid to match window size
 - Add rock-paper-scissors rules
