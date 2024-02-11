@@ -5,7 +5,7 @@ let nrows;
 let asp;
 let tileWidth;
 let tileHeight;
-let rand = 2;
+let rand = 3;
 let thresh = 4;
 let fps = 5;
 let grid;

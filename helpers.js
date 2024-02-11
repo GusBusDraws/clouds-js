@@ -63,8 +63,8 @@ function keyPressed() {
       text('Randomness = ' + rand, 100, 100)
     }
     else if (key === '1') {
-      thresh = 3
-      rand = 2
+      thresh = 4
+      rand = 3
       print('Set to preset 1:')
       print('Threshold = ' + thresh)
       print('Randomness = ' + rand)
